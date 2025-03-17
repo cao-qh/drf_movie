@@ -16,3 +16,9 @@ def movie_list(request):
         movies = Movie.objects.all()
         serializer = MovieListSerializer(movies , many=True)   
         return Response(serializer.data,status=status.HTTP_200_OK)
+    elif request.method == 'POST':
+        serializer = MovieListSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
