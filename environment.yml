@@ -1,6 +1,7 @@
-name: student_management
+name: drf_movie
 dependencies:
   - openpyxl=3.1.5
   - pymysql=1.0.2
   - python=3.11.11
   - conda-forge::django=4.2.4
+  - conda-forge::djangorestframework
