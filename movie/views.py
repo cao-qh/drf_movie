@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import Http404, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Movie
-from .serializers import MovieListSerializer
+from .serializers import MovieListSerializer,MovieDetailSerializer
 
 
 # Create your views here.
@@ -22,3 +23,12 @@ def movie_list(request):
             serializer.save()
             return Response(serializer.data,status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+class MovieDetail(APIView):
+    def get(self,request,pk):
+        try:
+            movie = Movie.objects.get(pk=pk)
+        except:
+            raise Http404
+        serializer = MovieDetailSerializer(movie)
+        return Response(serializer.data)
