@@ -1,9 +1,3 @@
-# django项目的配置
-/server/env
-__pycache__
-
-
-# vue项目的配置
 # Logs
 logs
 *.log
