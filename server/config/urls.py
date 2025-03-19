@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from movie import views
+
+router = DefaultRouter()
+router.register(r'movie', views.MovieViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/movie/',include('movie.urls',namespace='movie'))
+    # path('api/movie/',include('movie.urls',namespace='movie'))
+    path('api/', include(router.urls)),
 ]
