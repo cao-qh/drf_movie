@@ -6,9 +6,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import viewsets
+from django_filters import rest_framework as filters
 
-from .models import Movie
-from .serializers import MovieSerializer
+from .models import Movie,Category
+from .serializers import MovieSerializer,CategorySerializer
 
 
 # Create your views here.
@@ -63,7 +64,22 @@ from .serializers import MovieSerializer
 #     queryset = Movie.objects.all()
 #     serializer_class = MovieDetailSerializer
 
+class MovieFilter(filters.FilterSet):
+    movie_name = filters.CharFilter(lookup_expr='icontains')
+    category_id = filters.NumberFilter()
+    region = filters.NumberFilter()
+    
+    class Meta:
+        model = Movie
+        fields = ['movie_name']
 
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('movie_name',)
+    filterset_class = MovieFilter
+    
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

@@ -1,6 +1,6 @@
 <template>
   <div id="container" class="text-white text-sm bg-primary-300 min-h-screen pb-4"> 
-    <!-- <Header/> -->
+    <Header/>
     <MovieList/>
     <Footer/>
   </div>
