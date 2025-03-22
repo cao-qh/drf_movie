@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 曹起豪
+ Source Server         : 本机
  Source Server Type    : MySQL
- Source Server Version : 80404 (8.4.4)
+ Source Server Version : 80041
  Source Host           : localhost:3306
  Source Schema         : drf_movie
 
  Target Server Type    : MySQL
- Target Server Version : 80404 (8.4.4)
+ Target Server Version : 80041
  File Encoding         : 65001
 
- Date: 21/03/2025 18:31:02
+ Date: 22/03/2025 17:46:20
 */
 
 SET NAMES utf8mb4;
@@ -22,11 +22,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_group`;
 CREATE TABLE `auth_group`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `name`(`name` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+  UNIQUE INDEX `name`(`name`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_group
@@ -37,15 +37,15 @@ CREATE TABLE `auth_group`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_group_permissions`;
 CREATE TABLE `auth_group_permissions`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `group_id` int NOT NULL,
-  `permission_id` int NOT NULL,
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `group_id` int(0) NOT NULL,
+  `permission_id` int(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `auth_group_permissions_group_id_permission_id_0cd325b0_uniq`(`group_id` ASC, `permission_id` ASC) USING BTREE,
-  INDEX `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm`(`permission_id` ASC) USING BTREE,
+  UNIQUE INDEX `auth_group_permissions_group_id_permission_id_0cd325b0_uniq`(`group_id`, `permission_id`) USING BTREE,
+  INDEX `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm`(`permission_id`) USING BTREE,
   CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_group_permissions
@@ -56,14 +56,14 @@ CREATE TABLE `auth_group_permissions`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_permission`;
 CREATE TABLE `auth_permission`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `content_type_id` int NOT NULL,
+  `content_type_id` int(0) NOT NULL,
   `codename` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `auth_permission_content_type_id_codename_01ab375a_uniq`(`content_type_id` ASC, `codename` ASC) USING BTREE,
+  UNIQUE INDEX `auth_permission_content_type_id_codename_01ab375a_uniq`(`content_type_id`, `codename`) USING BTREE,
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_permission
@@ -106,7 +106,7 @@ INSERT INTO `auth_permission` VALUES (32, 'Can view 电影管理', 8, 'view_movi
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE `auth_user`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `last_login` datetime(6) NULL DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
@@ -118,28 +118,30 @@ CREATE TABLE `auth_user`  (
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `username`(`username` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+  UNIQUE INDEX `username`(`username`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user
 -- ----------------------------
 INSERT INTO `auth_user` VALUES (1, 'pbkdf2_sha256$600000$vGwoDh2x0hnieGHZMv1AIM$dTBS4TeUkFNAJWZJ63xpNhNbfvYNVaLhFGukvQG2Kig=', '2025-03-17 03:15:37.569958', 1, 'admin', '', '', 'caoqihao88@gmail.com', 1, 1, '2025-03-16 08:28:50.302668');
+INSERT INTO `auth_user` VALUES (2, 'pbkdf2_sha256$600000$jGaZ6ovWNvMHZOznUpJgAY$wth1Et07UY6ApDLKBfgtIMr4Xba9IOf9Q7xdaefxiq8=', NULL, 0, 'zhangsan', '', '', '', 0, 1, '2025-03-22 05:38:52.567559');
+INSERT INTO `auth_user` VALUES (4, 'pbkdf2_sha256$600000$4nnhbga9ttB0esXI6T9xku$KdMc0bOQCk6ht7/cxBA5BLPbnFzZho/eTMz5KvBHl0Y=', NULL, 0, 'andy', '', '', '380229607@qq.com', 0, 1, '2025-03-22 06:30:13.241199');
 
 -- ----------------------------
 -- Table structure for auth_user_groups
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user_groups`;
 CREATE TABLE `auth_user_groups`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `group_id` int NOT NULL,
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `user_id` int(0) NOT NULL,
+  `group_id` int(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `auth_user_groups_user_id_group_id_94350c0c_uniq`(`user_id` ASC, `group_id` ASC) USING BTREE,
-  INDEX `auth_user_groups_group_id_97559544_fk_auth_group_id`(`group_id` ASC) USING BTREE,
+  UNIQUE INDEX `auth_user_groups_user_id_group_id_94350c0c_uniq`(`user_id`, `group_id`) USING BTREE,
+  INDEX `auth_user_groups_group_id_97559544_fk_auth_group_id`(`group_id`) USING BTREE,
   CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user_groups
@@ -150,15 +152,15 @@ CREATE TABLE `auth_user_groups`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user_user_permissions`;
 CREATE TABLE `auth_user_user_permissions`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `permission_id` int NOT NULL,
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `user_id` int(0) NOT NULL,
+  `permission_id` int(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq`(`user_id` ASC, `permission_id` ASC) USING BTREE,
-  INDEX `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm`(`permission_id` ASC) USING BTREE,
+  UNIQUE INDEX `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq`(`user_id`, `permission_id`) USING BTREE,
+  INDEX `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm`(`permission_id`) USING BTREE,
   CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user_user_permissions
@@ -169,10 +171,10 @@ CREATE TABLE `auth_user_user_permissions`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of category
@@ -188,20 +190,20 @@ INSERT INTO `category` VALUES (5, '纪录片');
 -- ----------------------------
 DROP TABLE IF EXISTS `django_admin_log`;
 CREATE TABLE `django_admin_log`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `action_time` datetime(6) NOT NULL,
   `object_id` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   `object_repr` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `action_flag` smallint UNSIGNED NOT NULL,
+  `action_flag` smallint(0) UNSIGNED NOT NULL,
   `change_message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `content_type_id` int NULL DEFAULT NULL,
-  `user_id` int NOT NULL,
+  `content_type_id` int(0) NULL DEFAULT NULL,
+  `user_id` int(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `django_admin_log_content_type_id_c4bce8eb_fk_django_co`(`content_type_id` ASC) USING BTREE,
-  INDEX `django_admin_log_user_id_c564eba6_fk_auth_user_id`(`user_id` ASC) USING BTREE,
+  INDEX `django_admin_log_content_type_id_c4bce8eb_fk_django_co`(`content_type_id`) USING BTREE,
+  INDEX `django_admin_log_user_id_c564eba6_fk_auth_user_id`(`user_id`) USING BTREE,
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_admin_log
@@ -217,12 +219,12 @@ INSERT INTO `django_admin_log` VALUES (5, '2025-03-17 03:22:30.545678', '5', '�
 -- ----------------------------
 DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE `django_content_type`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `app_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `django_content_type_app_label_model_76bd3d3b_uniq`(`app_label` ASC, `model` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+  UNIQUE INDEX `django_content_type_app_label_model_76bd3d3b_uniq`(`app_label`, `model`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_content_type
@@ -241,12 +243,12 @@ INSERT INTO `django_content_type` VALUES (6, 'sessions', 'session');
 -- ----------------------------
 DROP TABLE IF EXISTS `django_migrations`;
 CREATE TABLE `django_migrations`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
   `app` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_migrations
@@ -280,8 +282,8 @@ CREATE TABLE `django_session`  (
   `session_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `expire_date` datetime(6) NOT NULL,
   PRIMARY KEY (`session_key`) USING BTREE,
-  INDEX `django_session_expire_date_a5c62663`(`expire_date` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+  INDEX `django_session_expire_date_a5c62663`(`expire_date`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_session
@@ -294,13 +296,13 @@ INSERT INTO `django_session` VALUES ('nbmu749ml81gmjafm1q0n4sgmiz9cwm8', '.eJxVj
 -- ----------------------------
 DROP TABLE IF EXISTS `movie`;
 CREATE TABLE `movie`  (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
   `movie_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `release_year` int NOT NULL,
+  `release_year` int(0) NOT NULL,
   `director` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `scriptwriter` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `actors` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `region` smallint NOT NULL,
+  `region` smallint(0) NOT NULL,
   `types` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `language` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `release_date` date NOT NULL,
@@ -311,18 +313,18 @@ CREATE TABLE `movie`  (
   `review` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `is_hot` tinyint(1) NOT NULL,
   `is_top` tinyint(1) NOT NULL,
-  `quality` smallint NOT NULL,
+  `quality` smallint(0) NOT NULL,
   `subtitle` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `update_info` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `update_progress` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `download_info` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `is_show` tinyint(1) NOT NULL,
   `is_free` tinyint(1) NOT NULL,
-  `category_id` int NOT NULL,
+  `category_id` int(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `movie_category_id_9612da2e_fk_category_id`(`category_id` ASC) USING BTREE,
+  INDEX `movie_category_id_9612da2e_fk_category_id`(`category_id`) USING BTREE,
   CONSTRAINT `movie_category_id_9612da2e_fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 534 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 533 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of movie

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "movie",
     "rest_framework",
     "django_filters",
-    "djoser"
+    "djoser",
+    "account"
 ]
 
 MIDDLEWARE = [
@@ -143,4 +144,25 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": (
         "django_filters.rest_framework.DjangoFilterBackend",
     ),
+}
+
+# 邮箱配置
+# XQZx7SMNWLJTYN65
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'littleapp_a@163.com'
+EMAIL_HOST_PASSWORD = 'XQZx7SMNWLJTYN65'
+DEFAULT_FROM_EMAIL = 'littleapp_a@163.com'
+
+
+# Djoser配置
+DJOSER = {
+    "USER_ID_FIELD": "username",
+    "LOGIN_FIELD":"email",
+    "SEND_ACTIVATION_EMAIL":True,
+    "ACTIVATION_URL":"activate/{uid}/{token}",
+    "SEND_CONFIRMATION_EMAIL":True,
+    "SERIALIZERS":{
+        "user_create":"account.serializers.CustomUserCreateSerializer"
+    }
 }
