@@ -15,5 +15,5 @@ pnpm run serve
 pnpm run build
 ```
 
-### Customize configuration
+### Customize configuration e
 See [Configuration Reference](https://cli.vuejs.org/config/).
