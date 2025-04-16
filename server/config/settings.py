@@ -144,6 +144,14 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": (
         "django_filters.rest_framework.DjangoFilterBackend",
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+# 配置JWT
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
 }
 
 # 邮箱配置
