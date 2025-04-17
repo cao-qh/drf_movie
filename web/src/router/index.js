@@ -4,6 +4,7 @@ import MovieDetail from '../views/MovieDetail.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import Personal from '../views/Personal.vue'
+import ResetPassword from "@/views/ResetPassword.vue";
 import ChangePassword from '../views/ChangePassword.vue'
 import store from '../store'
 import ActivateEmail from '../views/ActivateEmail.vue'
@@ -31,6 +32,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login
+  },
+  {
+    path: '/reset_password',
+    name: 'ResetPassword',
+    component: ResetPassword
   },
   {
     path: "/activate/:uid/:token",
