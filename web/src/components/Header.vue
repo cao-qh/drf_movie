@@ -1,46 +1,96 @@
+<script>
+import Category from "@/components/Category.vue";
+import axios from "axios";
+export default {
+  name: "Header",
+  components: { Category },
+  data: function () {
+    return {
+      keyword: '',
+      username: '',
+      showMenu: false,
+    }
+  },
+  mounted() {
+    this.username = localStorage.getItem('username')
+    //判断登录状态
+    const currentTime = Date.now()
+    const expiredTime = localStorage.getItem('expiredTime')
+    const refreshToken = localStorage.getItem('refreshToken')
+    console.log(currentTime)
+    console.log(expiredTime)
+    console.log(refreshToken)
+    if (expiredTime > currentTime) {
+      this.$store.commit('setLoginStatus', true)
+    }
+    else if (refreshToken) {
+      axios
+        .post('api/jwt/refresh/', { refresh: refreshToken })
+        .then(response => {
+          console.log('执行refresh')
+          const token = response.data.access
+          localStorage.setItem("token", token)
+          //更新过期时间
+          const expiredTime = Date.now() + 5 * 60 * 1000
+          localStorage.setItem("expiredTime", expiredTime)
+          this.$store.commit('setLoginStatus', true)
+        })
+        .catch(error => {
+          console.log(error)
+          this.$store.commit('setLoginStatus', false)
+          localStorage.clear()
+        })
+    }
+    else {
+      this.$store.commit('setLoginStatus', false)
+      localStorage.clear()
+    }
+  },
+  methods: {
+    searchMovies() {
+      const keyword = this.keyword.trim()//去除空格
+      this.$router.push({
+        name: 'home',
+        query: { search: keyword }
+      })
+    },
+    toggleMenu() {
+      this.showMenu = !this.showMenu
+    },
+    //退出登录
+    logout() {
+      localStorage.clear()
+      this.$store.commit('setLoginStatus', false)
+    }
+  }
+}
+</script>
+
 <template>
-  <div id="header" class="h-12 py-1 bg-primary-100 flex items-center justify-center">
-    <div class="w-full px-4" style="max-width:1440px;">
+  <div id=header class="h-12 py-1 bg-primary-100 flex items-center justify-center">
+    <div class="w-full px-4" style="max-width:1440px">
       <div class="flex justify-between">
         <div class="flex items-center">
-          <a href="/">
+          <a href="http://127.0.0.1:8080">
             <img src="../assets/images/logo.png" style="height:39px">
           </a>
-          <div id="nav" class="px-4">
-            <category />
+          <div id=nav class=px-4>
+            <Category></Category>
           </div>
         </div>
-        <!-- 输入框 -->
         <div class="flex items-center space-x-2">
           <div class="relative shrink">
             <form>
-              <input v-model="keyword" type="text" name="keyword" class="
-                      outline-0
-                      h-9
-                      rounded
-                      bg-primary-700
-                      border
-                      border-gray-600
-                      placeholder-gray-400
-                      w-64
-                      px-2
-                      py-1
-                      max-w-[180px]
-                  " placeholder="请输入关键词">
-              <div class="
-                      absolute
-                      top-0
-                      right-0
-                      flex
-                      items-center
-                      h-full
-                  ">
-                <div class=" rounded text-xs text-gray-400 px-2 mr-2">
+              <input v-model="keyword" type=text name=keyword
+                class="outline-0 h-9 rounded bg-primary-700 border border-gray-600 placeholder-gray-400 w-64 px-2 py-1 max-w-[180px]"
+                placeholder=请输入关键词 value>
+              <div class="absolute top-0 right-0 flex items-center h-full">
+                <div class="rounded text-xs text-gray-400 px-2 mr-2">
                   <button v-on:click.prevent="searchMovies">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    <svg xmlns=http://www.w3.org/2000/svg class="h-4 w-4" fill=none viewBox="0 0 24 24"
+                      stroke=currentColor stroke-width=2>
+                      <path stroke-linecap=round stroke-linejoin=round d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                      </path>
                     </svg>
                   </button>
                 </div>
@@ -67,14 +117,21 @@
                   <a href="/collect">我的收藏</a>
                 </li>
                 <li class="plx-2 py-2">
+                  <a href="/member_card">购买会员</a>
+                </li>
+                <li class="plx-2 py-2">
+                  <a href="/orders">我的订单</a>
+                </li>
+                <li class="plx-2 py-2">
                   <router-link to="/" v-on:click.prevent="logout()">退出</router-link>
                 </li>
               </ul>
             </div>
           </div>
+
           <div v-else class="text-white flex-shrink-0 pr-2">
-            <a href="/login/">登录</a> /
-            <a href="/register/">注册</a>
+            <a href="/login" >登录</a>
+            / <a href="/register">注册</a>
           </div>
         </div>
       </div>
@@ -82,79 +139,4 @@
   </div>
 </template>
 
-<script>
-import Category from '@/components/Category.vue'
-import axios from 'axios'
-
-export default {
-  name: 'Header',
-  data: function () {
-    return {
-      keyword: '',
-      username: '',
-      showMenu: false,
-    }
-  },
-  mounted() {
-    this.username = localStorage.getItem('username')
-    // 判断登录状态
-    const currentTime = Date.now()
-    const expiredTime = localStorage.getItem('expiredTime')
-    const refreshToken = localStorage.getItem('refreshToken')
-    console.log(currentTime)
-    console.log(expiredTime)
-
-    if (expiredTime > currentTime) {
-      this.$store.commit('setLoginStatus', true)
-    }
-    else if (refreshToken) {
-      axios
-        .post('/api/jwt/refresh/', { refresh: refreshToken })
-        .then(response => {
-          console.log('执行refresh')
-          const token = response.data.access
-          localStorage.setItem("token", token)
-          // 更新过期时间
-          const expiredTime = Date.now() + 5 * 60 * 1000
-          localStorage.setItem('expiredTime', expiredTime)
-          this.$store.commit('setLoginStatus', true)
-          this.$store.commit('setToken', token)
-        })
-        .catch(error => {
-          console.log(error)
-          this.$store.commit('setLoginStatus', false)
-          this.$store.commit('removeToken')
-          localStorage.clear()
-        })
-
-    }
-    else {
-      this.$store.commit('setLoginStatus', false)
-      this.$store.commit('removeToken')
-      localStorage.clear()
-    }
-  },
-  components: { Category },
-  methods: {
-    searchMovies() {
-      const keyword = this.keyword.trim() //去除空格
-      this.$router.push({
-        name: 'home',
-        query: { search: keyword }
-      })
-    },
-    // 切换展示和隐藏
-    toggleMenu() {
-      this.showMenu = !this.showMenu
-    },
-    // 退出
-    logout() {
-      localStorage.clear() // 情况本地数据
-      this.$store.commit('setLoginStatus', false)
-      this.$store.commit('setToken')
-    }
-
-
-  },
-}
-</script>
+<style scoped lang="scss"></style>
