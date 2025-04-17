@@ -85,10 +85,12 @@ export default {
           localStorage.setItem("refreshToken", refreshToken)
           localStorage.setItem("username", username)
           localStorage.setItem("expiredTime", Date.now() + 5 * 60 * 1000)
-          this.$store.commit('setToken', token)
-          showMessage('登录成功', 'info', () => {
+          this.$store.commit('setLoginStatus',true)
+          const redirectAfterLogin = this.$route.query.jump
+          const redirectUrl = redirectAfterLogin ? redirectAfterLogin : '/'
+          showMessage('登陆成功', 'info', () => {
             this.$router.push({
-              name: 'home'
+              path: redirectUrl
             })
           })
         })

@@ -119,6 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = "zh-hans"
+LOCALE_PATHS = [
+    Path(BASE_DIR).joinpath("locale"),
+]
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = "Asia/Shanghai"
@@ -175,5 +178,6 @@ DJOSER = {
     "PASSWORD_RESET_CONFIRM_URL": "password_reset/{uid}/{token}",
     "PASSWORD_RESET_CONFIRM_RETYPE": True,
     "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": True,
+    "SET_PASSWORD_RETYPE":True,
     "SERIALIZERS": {"user_create": "account.serializers.CustomUserCreateSerializer"},
 }
