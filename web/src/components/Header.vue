@@ -31,7 +31,7 @@ export default {
           const token = response.data.access
           localStorage.setItem("token", token)
           //更新过期时间
-          const expiredTime = Date.now() + 5 * 60 * 1000
+          const expiredTime = Date.now() + 20 * 60 * 1000
           localStorage.setItem("expiredTime", expiredTime)
           this.$store.commit('setLoginStatus', true)
         })

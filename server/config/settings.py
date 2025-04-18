@@ -155,7 +155,7 @@ from datetime import timedelta
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("JWT",),
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),  # 设置访问令牌的生命周期
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),  # 设置访问令牌的生命周期
     "REFRESH_TOKEN_LIFETIME": timedelta(days=14),  # 设置刷新令牌的生命周期
 }
 

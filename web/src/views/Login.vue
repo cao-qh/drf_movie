@@ -84,7 +84,7 @@ export default {
           localStorage.setItem("token", token)
           localStorage.setItem("refreshToken", refreshToken)
           localStorage.setItem("username", username)
-          localStorage.setItem("expiredTime", Date.now() + 5 * 60 * 1000)
+          localStorage.setItem("expiredTime", Date.now() + 20 * 60 * 1000)
           this.$store.commit('setLoginStatus',true)
           const redirectAfterLogin = this.$route.query.jump
           const redirectUrl = redirectAfterLogin ? redirectAfterLogin : '/'
