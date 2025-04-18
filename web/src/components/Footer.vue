@@ -5,8 +5,8 @@ export default {
 </script>
 
 <template>
-  <footer class="bottom-0 w-full flex justify-center items-center bg-primary-100 py-4">
-    <p class="text-gray-500">© 2025 宛军看电影 All rights reserved.</p>
+  <footer class="flex justify-center items-center  py-3">
+    <p class="text-gray-500">© 2025 云课堂学习平台</p>
   </footer>
 </template>
 

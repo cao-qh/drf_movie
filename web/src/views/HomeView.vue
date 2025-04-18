@@ -1,5 +1,5 @@
 <template>
-  <div id="container" class="text-white text-sm bg-primary-300 min-h-screen pb-4">
+  <div id="container" class="text-white text-sm bg-primary-300 min-h-screen">
     <Header></Header>
     <MovieList></MovieList>
     <Footer></Footer>

@@ -3,22 +3,21 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-  name: 'App',
+  name:'App',
   beforeCreate() {
     this.$store.commit('initializeStore')
-    // const token = this.$store.state.token
-    const token = this.$store.state.token
-
-    if (token) {
-        axios.defaults.headers.common['Authorization'] = "JWT " + token
-    } else {
-        axios.defaults.headers.common['Authorization'] = ""
+    //设置axios headers
+    const token = localStorage.getItem('token')
+    if (token){
+      axios.defaults.headers.common['Authorization'] = 'JWT '+ token
     }
-    console.log('axios token is:' + axios.defaults.headers.common['Authorization'])
+    else {
+      axios.defaults.headers.common['Authorization'] = ''
+    }
+
   },
 }
 </script>
-

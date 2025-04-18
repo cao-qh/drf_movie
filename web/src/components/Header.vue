@@ -67,7 +67,7 @@ export default {
 </script>
 
 <template>
-  <div id=header class="h-12 py-1 bg-primary-100 flex items-center justify-center">
+  <div id=header class="fixed w-full z-10 top-0 h-12 py-1 bg-primary-100 flex items-center justify-center">
     <div class="w-full px-4" style="max-width:1440px">
       <div class="flex justify-between">
         <div class="flex items-center">
@@ -130,13 +130,14 @@ export default {
           </div>
 
           <div v-else class="text-white flex-shrink-0 pr-2">
-            <a href="/login" >登录</a>
+            <a href="/login">登录</a>
             / <a href="/register">注册</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="h-12 py-1"></div>
 </template>
 
 <style scoped lang="scss"></style>

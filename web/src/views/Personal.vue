@@ -1,6 +1,6 @@
 <template>
 <div id="container" class="text-white text-sm bg-primary-300 min-h-screen pb-4"> 
-    <Header/>
+    <Header></Header>
     <div id="main" class="bg-primary-300 p-6 text-black">
         <div class="rounded bg-white mx-4 my-4 py-6 ">
             <div class="px-6">
@@ -33,7 +33,7 @@
         </div>
     </div>
     
-    <Footer/>
+    <Footer></Footer>
 </div>
 </template>
 
