@@ -21,7 +21,7 @@ export default {
         this.get_movie_info(movie_id)
         //判断一下用户是否登录
         if (!this.$store.state.isLogin) {
-            this.collectStatus = true
+            this.collectStatus = false
             this.collectMessage = '添加收藏'
         }
         else {
@@ -78,7 +78,7 @@ export default {
                     showMessage(message)
                 })
                 .catch(error => {
-                    showMessage('收藏失败')
+                    showMessage('取消收藏失败')
                 })
         },
         //收藏功能
@@ -136,8 +136,8 @@ export default {
                             <img referrerPolicy="no-referrer" class="h-full w-full" :src="movie.image_url" />
                         </div>
                         <button v-on:click="collect_or_cancle(movie.id)" id="collect"
-                            :class="collectStatus ? 'bg-gray-700' : 'bg-blue-500'"
-                            class="= copy text-white w-full px-4 py-1 mt-2 text-sm rounded border">{{ collectMessage
+                            :class="collectStatus ? 'bg-gray-500' : 'bg-blue-500'"
+                            class="copy text-white w-full px-4 py-1 mt-2 text-sm rounded border">{{ collectMessage
                             }}</button>
                     </div>
                     <div id="info" data-movie-id="443">
