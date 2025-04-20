@@ -20,11 +20,15 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from movie import views
 from account import views as account_views
+from trade import views as trade_views
+
 
 router = DefaultRouter()
 router.register(r"movie", views.MovieViewSet)
 router.register(r"category", views.CategoryViewSet)
 router.register(r"collects", account_views.CollectViewSet, 'collects')
+router.register(r'cards',trade_views.CardViewSet,'cards')
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),

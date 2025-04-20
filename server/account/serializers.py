@@ -25,6 +25,12 @@ class CustomUserCreateSerializer(UserCreateSerializer):
         profile = Profile(user=user)
         profile.save()
         return user
+    
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Profile
+        fields = "__all__"
 
 class CustomUserSerializer(UserSerializer):
     profile = ProfileSerializer(read_only=True)
