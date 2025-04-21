@@ -36,4 +36,5 @@ urlpatterns = [
     path("api/", include(router.urls)),
     path("api/", include("djoser.urls")),
     path("api/", include("djoser.urls.jwt")),
+    path('api/alipay/',trade_views.AlipayAPIView.as_view()),
 ]
