@@ -199,3 +199,5 @@ ALIPAY_PUBLIC_KEY = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtAiCSOOkRwq2n1J
 ALIPAY_RETURN_URL = 'http://2a0335d6.r27.cpolar.top/orders/'
 #NotifyURL
 ALIPAY_NOTIFY_URL = 'http://2a0335d6.r27.cpolar.top/api/callback/'
+#seller_id
+ALIPAY_SELLER_ID = '2088721023502536'

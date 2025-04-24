@@ -28,6 +28,7 @@ router.register(r"movie", views.MovieViewSet)
 router.register(r"category", views.CategoryViewSet)
 router.register(r"collects", account_views.CollectViewSet, 'collects')
 router.register(r'cards',trade_views.CardViewSet,'cards')
+router.register(r'orders',trade_views.OrderViewSet,'orders')
 
 
 urlpatterns = [
@@ -37,4 +38,5 @@ urlpatterns = [
     path("api/", include("djoser.urls")),
     path("api/", include("djoser.urls.jwt")),
     path('api/alipay/',trade_views.AlipayAPIView.as_view()),
+    path('api/callback/',trade_views.AlipayCallbackAPIView.as_view()),
 ]

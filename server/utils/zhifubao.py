@@ -23,6 +23,8 @@ from alipay.aop.api.response.AlipayOfflineMaterialImageUploadResponse import (
     AlipayOfflineMaterialImageUploadResponse,
 )
 from alipay.aop.api.response.AlipayTradePayResponse import AlipayTradePayResponse
+from alipay.aop.api.util.SignatureUtils import verify_with_rsa
+
 
 from django.conf import settings
 
@@ -68,7 +70,10 @@ class Alipay:
         model.product_code = product_code
         request = AlipayTradePagePayRequest(biz_model=model)
         # request.return_url = settings.ALIPAY_RETURN_URL
-        # request.notify_url = settings.ALIPAY_NOTIFY_URL
+        request.notify_url = settings.ALIPAY_NOTIFY_URL
         # 得到构造的请求，如果http_method是GET，则是一个带完成请求参数的url，如果http_method是POST，则是一段HTML表单片段
         response = self.client.page_execute(request, http_method="GET")
         return response
+
+    def verify_sign(self,unsigned_string,sign):
+        return verify_with_rsa(settings.ALIPAY_PUBLIC_KEY, bytes(unsigned_string,encoding='utf-8'), sign)
