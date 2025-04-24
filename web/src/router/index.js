@@ -11,6 +11,7 @@ import store from "../store";
 import ActivateEmail from "../views/ActivateEmail.vue";
 import MemberCard from "../views/MemberCard.vue";
 import Collect from "../views/Collect.vue";
+import Order from "@/views/Order.vue";
 
 const routes = [
   {
@@ -78,6 +79,14 @@ const routes = [
     path: "/member_card",
     name: "MemberCard",
     component: MemberCard,
+  },
+  {
+    path: '/orders',
+    name: 'Orders',
+    component: Order,
+    meta:{
+      requireLogin:true
+    }
   },
 ];
 
