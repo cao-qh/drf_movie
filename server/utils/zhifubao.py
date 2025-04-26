@@ -69,7 +69,7 @@ class Alipay:
         model.body = body
         model.product_code = product_code
         request = AlipayTradePagePayRequest(biz_model=model)
-        # request.return_url = settings.ALIPAY_RETURN_URL
+        request.return_url = settings.ALIPAY_RETURN_URL
         request.notify_url = settings.ALIPAY_NOTIFY_URL
         # 得到构造的请求，如果http_method是GET，则是一个带完成请求参数的url，如果http_method是POST，则是一段HTML表单片段
         response = self.client.page_execute(request, http_method="GET")

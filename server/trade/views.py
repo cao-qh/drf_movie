@@ -19,6 +19,8 @@ from utils.common import get_random_code
 from utils.zhifubao import Alipay
 from utils.filters import OrderFilter
 
+from .tasks import add,mul,xsum
+
 
 # Create your views here.
 class CardViewSet(viewsets.ModelViewSet):
@@ -143,3 +145,17 @@ class OrderViewSet(viewsets.ModelViewSet):
             return [IsAuthenticated()]
         else:
             return [IsAdminUser]
+
+class TaskAPIView(APIView):
+    
+    def get(self, request):
+        result1 = add.delay(3,4)
+        print(f'add: {result1}')
+        
+        result2 = mul.delay(4,5)
+        print(f'mul: {result2}')
+        
+        result3 = xsum.delay([1,2,3])
+        print(f'xsum: {result3}')
+        
+        return Response('执行task')

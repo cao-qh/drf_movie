@@ -11,3 +11,5 @@ dependencies:
     - djoser==2.2.0
     - django-shortuuidfield
     - alipay-sdk-python
+    - celery[redis,auth,msgpack]
+    - flower

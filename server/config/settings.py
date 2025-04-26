@@ -201,3 +201,11 @@ ALIPAY_RETURN_URL = 'http://2a0335d6.r27.cpolar.top/orders/'
 ALIPAY_NOTIFY_URL = 'http://2a0335d6.r27.cpolar.top/api/callback/'
 #seller_id
 ALIPAY_SELLER_ID = '2088721023502536'
+
+
+# 配置Celery
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/1"
+CELERY_TIMEZONE = "Asia/Shanghai"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
