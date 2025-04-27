@@ -13,3 +13,4 @@ dependencies:
     - alipay-sdk-python
     - celery[redis,auth,msgpack]
     - flower
+    - django-celery-beat

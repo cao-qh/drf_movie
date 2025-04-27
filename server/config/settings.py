@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "django_filters",
     "djoser",
     "account",
-    "trade"
+    "trade",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
