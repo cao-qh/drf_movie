@@ -11,7 +11,7 @@
  Target Server Version : 80041
  File Encoding         : 65001
 
- Date: 22/03/2025 17:46:20
+ Date: 28/04/2025 17:10:00
 */
 
 SET NAMES utf8mb4;
@@ -63,7 +63,7 @@ CREATE TABLE `auth_permission`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `auth_permission_content_type_id_codename_01ab375a_uniq`(`content_type_id`, `codename`) USING BTREE,
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_permission
@@ -100,6 +100,42 @@ INSERT INTO `auth_permission` VALUES (29, 'Can add 电影管理', 8, 'add_movie'
 INSERT INTO `auth_permission` VALUES (30, 'Can change 电影管理', 8, 'change_movie');
 INSERT INTO `auth_permission` VALUES (31, 'Can delete 电影管理', 8, 'delete_movie');
 INSERT INTO `auth_permission` VALUES (32, 'Can view 电影管理', 8, 'view_movie');
+INSERT INTO `auth_permission` VALUES (33, 'Can add 用户信息', 9, 'add_profile');
+INSERT INTO `auth_permission` VALUES (34, 'Can change 用户信息', 9, 'change_profile');
+INSERT INTO `auth_permission` VALUES (35, 'Can delete 用户信息', 9, 'delete_profile');
+INSERT INTO `auth_permission` VALUES (36, 'Can view 用户信息', 9, 'view_profile');
+INSERT INTO `auth_permission` VALUES (37, 'Can add 会员卡信息', 10, 'add_card');
+INSERT INTO `auth_permission` VALUES (38, 'Can change 会员卡信息', 10, 'change_card');
+INSERT INTO `auth_permission` VALUES (39, 'Can delete 会员卡信息', 10, 'delete_card');
+INSERT INTO `auth_permission` VALUES (40, 'Can view 会员卡信息', 10, 'view_card');
+INSERT INTO `auth_permission` VALUES (41, 'Can add 订单信息', 11, 'add_order');
+INSERT INTO `auth_permission` VALUES (42, 'Can change 订单信息', 11, 'change_order');
+INSERT INTO `auth_permission` VALUES (43, 'Can delete 订单信息', 11, 'delete_order');
+INSERT INTO `auth_permission` VALUES (44, 'Can view 订单信息', 11, 'view_order');
+INSERT INTO `auth_permission` VALUES (45, 'Can add crontab', 12, 'add_crontabschedule');
+INSERT INTO `auth_permission` VALUES (46, 'Can change crontab', 12, 'change_crontabschedule');
+INSERT INTO `auth_permission` VALUES (47, 'Can delete crontab', 12, 'delete_crontabschedule');
+INSERT INTO `auth_permission` VALUES (48, 'Can view crontab', 12, 'view_crontabschedule');
+INSERT INTO `auth_permission` VALUES (49, 'Can add interval', 13, 'add_intervalschedule');
+INSERT INTO `auth_permission` VALUES (50, 'Can change interval', 13, 'change_intervalschedule');
+INSERT INTO `auth_permission` VALUES (51, 'Can delete interval', 13, 'delete_intervalschedule');
+INSERT INTO `auth_permission` VALUES (52, 'Can view interval', 13, 'view_intervalschedule');
+INSERT INTO `auth_permission` VALUES (53, 'Can add periodic task', 14, 'add_periodictask');
+INSERT INTO `auth_permission` VALUES (54, 'Can change periodic task', 14, 'change_periodictask');
+INSERT INTO `auth_permission` VALUES (55, 'Can delete periodic task', 14, 'delete_periodictask');
+INSERT INTO `auth_permission` VALUES (56, 'Can view periodic task', 14, 'view_periodictask');
+INSERT INTO `auth_permission` VALUES (57, 'Can add periodic task track', 15, 'add_periodictasks');
+INSERT INTO `auth_permission` VALUES (58, 'Can change periodic task track', 15, 'change_periodictasks');
+INSERT INTO `auth_permission` VALUES (59, 'Can delete periodic task track', 15, 'delete_periodictasks');
+INSERT INTO `auth_permission` VALUES (60, 'Can view periodic task track', 15, 'view_periodictasks');
+INSERT INTO `auth_permission` VALUES (61, 'Can add solar event', 16, 'add_solarschedule');
+INSERT INTO `auth_permission` VALUES (62, 'Can change solar event', 16, 'change_solarschedule');
+INSERT INTO `auth_permission` VALUES (63, 'Can delete solar event', 16, 'delete_solarschedule');
+INSERT INTO `auth_permission` VALUES (64, 'Can view solar event', 16, 'view_solarschedule');
+INSERT INTO `auth_permission` VALUES (65, 'Can add clocked', 17, 'add_clockedschedule');
+INSERT INTO `auth_permission` VALUES (66, 'Can change clocked', 17, 'change_clockedschedule');
+INSERT INTO `auth_permission` VALUES (67, 'Can delete clocked', 17, 'delete_clockedschedule');
+INSERT INTO `auth_permission` VALUES (68, 'Can view clocked', 17, 'view_clockedschedule');
 
 -- ----------------------------
 -- Table structure for auth_user
@@ -119,14 +155,13 @@ CREATE TABLE `auth_user`  (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user
 -- ----------------------------
-INSERT INTO `auth_user` VALUES (1, 'pbkdf2_sha256$600000$vGwoDh2x0hnieGHZMv1AIM$dTBS4TeUkFNAJWZJ63xpNhNbfvYNVaLhFGukvQG2Kig=', '2025-03-17 03:15:37.569958', 1, 'admin', '', '', 'caoqihao88@gmail.com', 1, 1, '2025-03-16 08:28:50.302668');
-INSERT INTO `auth_user` VALUES (2, 'pbkdf2_sha256$600000$jGaZ6ovWNvMHZOznUpJgAY$wth1Et07UY6ApDLKBfgtIMr4Xba9IOf9Q7xdaefxiq8=', NULL, 0, 'zhangsan', '', '', '', 0, 1, '2025-03-22 05:38:52.567559');
-INSERT INTO `auth_user` VALUES (4, 'pbkdf2_sha256$600000$4nnhbga9ttB0esXI6T9xku$KdMc0bOQCk6ht7/cxBA5BLPbnFzZho/eTMz5KvBHl0Y=', NULL, 0, 'andy', '', '', '380229607@qq.com', 0, 1, '2025-03-22 06:30:13.241199');
+INSERT INTO `auth_user` VALUES (1, 'pbkdf2_sha256$600000$vGwoDh2x0hnieGHZMv1AIM$dTBS4TeUkFNAJWZJ63xpNhNbfvYNVaLhFGukvQG2Kig=', '2025-04-20 02:10:55.546553', 1, 'admin', '', '', 'caoqihao88@gmail.com', 1, 1, '2025-03-16 08:28:50.302668');
+INSERT INTO `auth_user` VALUES (16, 'pbkdf2_sha256$600000$YKO956fft6MXjYiZ2Bcgcn$3MvhvmBEJ6cJnRFdZY0zpEJMKBMvq0PvVZMC+jYJWyc=', NULL, 0, 'andy', '', '', '380229607@qq.com', 0, 1, '2025-04-18 06:49:06.198031');
 
 -- ----------------------------
 -- Table structure for auth_user_groups
@@ -141,7 +176,7 @@ CREATE TABLE `auth_user_groups`  (
   INDEX `auth_user_groups_group_id_97559544_fk_auth_group_id`(`group_id`) USING BTREE,
   CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user_groups
@@ -160,11 +195,34 @@ CREATE TABLE `auth_user_user_permissions`  (
   INDEX `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm`(`permission_id`) USING BTREE,
   CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user_user_permissions
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for card
+-- ----------------------------
+DROP TABLE IF EXISTS `card`;
+CREATE TABLE `card`  (
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `card_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `card_price` decimal(8, 2) NOT NULL,
+  `duration` int(0) NOT NULL,
+  `info` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `card_name`(`card_name`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of card
+-- ----------------------------
+INSERT INTO `card` VALUES (1, '月卡', 0.01, 30, '月卡：有效期30天', '2025-04-20 02:11:56.701497', '2025-04-20 02:11:56.701497');
+INSERT INTO `card` VALUES (2, '季卡', 0.02, 90, '季卡：90天', '2025-04-20 02:57:35.945859', '2025-04-20 02:57:35.945859');
+INSERT INTO `card` VALUES (3, '年卡', 0.03, 365, '季卡：365天', '2025-04-20 02:58:00.972963', '2025-04-20 02:58:00.972963');
 
 -- ----------------------------
 -- Table structure for category
@@ -174,7 +232,7 @@ CREATE TABLE `category`  (
   `id` int(0) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of category
@@ -203,7 +261,7 @@ CREATE TABLE `django_admin_log`  (
   INDEX `django_admin_log_user_id_c564eba6_fk_auth_user_id`(`user_id`) USING BTREE,
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_admin_log
@@ -213,6 +271,143 @@ INSERT INTO `django_admin_log` VALUES (2, '2025-03-17 03:22:10.477185', '2', '�
 INSERT INTO `django_admin_log` VALUES (3, '2025-03-17 03:22:16.237346', '3', '综艺', 1, '[{\"added\": {}}]', 7, 1);
 INSERT INTO `django_admin_log` VALUES (4, '2025-03-17 03:22:25.097183', '4', '动漫', 1, '[{\"added\": {}}]', 7, 1);
 INSERT INTO `django_admin_log` VALUES (5, '2025-03-17 03:22:30.545678', '5', '纪录片', 1, '[{\"added\": {}}]', 7, 1);
+INSERT INTO `django_admin_log` VALUES (6, '2025-04-19 07:46:11.988463', '2', '人生小事', 2, '[{\"changed\": {\"fields\": [\"\\u53c8\\u540d\", \"\\u6e05\\u6670\\u5ea6\", \"\\u7f51\\u76d8\\u4fe1\\u606f\", \"\\u662f\\u5426\\u514d\\u8d39\"]}}]', 8, 1);
+INSERT INTO `django_admin_log` VALUES (7, '2025-04-20 02:11:56.702494', '1', 'Card object (1)', 1, '[{\"added\": {}}]', 10, 1);
+INSERT INTO `django_admin_log` VALUES (8, '2025-04-27 01:30:34.563433', '1', '每 5 秒', 1, '[{\"added\": {}}]', 13, 1);
+INSERT INTO `django_admin_log` VALUES (9, '2025-04-27 01:32:19.842612', '2', '测试: 每 5 秒', 1, '[{\"added\": {}}]', 14, 1);
+INSERT INTO `django_admin_log` VALUES (10, '2025-04-27 01:32:57.941328', '1', 'celery.backend_cleanup: 0 4 * * * (m/h/dM/MY/d) Asia/Shanghai', 3, '', 14, 1);
+INSERT INTO `django_admin_log` VALUES (11, '2025-04-27 01:53:28.912561', '2', '每 30 秒', 1, '[{\"added\": {}}]', 13, 1);
+INSERT INTO `django_admin_log` VALUES (12, '2025-04-27 01:53:44.331307', '3', '检查订单状态: 每 30 秒', 1, '[{\"added\": {}}]', 14, 1);
+
+-- ----------------------------
+-- Table structure for django_celery_beat_clockedschedule
+-- ----------------------------
+DROP TABLE IF EXISTS `django_celery_beat_clockedschedule`;
+CREATE TABLE `django_celery_beat_clockedschedule`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `clocked_time` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of django_celery_beat_clockedschedule
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for django_celery_beat_crontabschedule
+-- ----------------------------
+DROP TABLE IF EXISTS `django_celery_beat_crontabschedule`;
+CREATE TABLE `django_celery_beat_crontabschedule`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `minute` varchar(240) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `hour` varchar(96) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `day_of_week` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `day_of_month` varchar(124) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `month_of_year` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `timezone` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of django_celery_beat_crontabschedule
+-- ----------------------------
+INSERT INTO `django_celery_beat_crontabschedule` VALUES (1, '0', '4', '*', '*', '*', 'Asia/Shanghai');
+
+-- ----------------------------
+-- Table structure for django_celery_beat_intervalschedule
+-- ----------------------------
+DROP TABLE IF EXISTS `django_celery_beat_intervalschedule`;
+CREATE TABLE `django_celery_beat_intervalschedule`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `every` int(0) NOT NULL,
+  `period` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of django_celery_beat_intervalschedule
+-- ----------------------------
+INSERT INTO `django_celery_beat_intervalschedule` VALUES (1, 5, 'seconds');
+INSERT INTO `django_celery_beat_intervalschedule` VALUES (2, 30, 'seconds');
+
+-- ----------------------------
+-- Table structure for django_celery_beat_periodictask
+-- ----------------------------
+DROP TABLE IF EXISTS `django_celery_beat_periodictask`;
+CREATE TABLE `django_celery_beat_periodictask`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `task` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `args` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `kwargs` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `queue` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `exchange` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `routing_key` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `expires` datetime(6) NULL DEFAULT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `last_run_at` datetime(6) NULL DEFAULT NULL,
+  `total_run_count` int(0) UNSIGNED NOT NULL,
+  `date_changed` datetime(6) NOT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `crontab_id` int(0) NULL DEFAULT NULL,
+  `interval_id` int(0) NULL DEFAULT NULL,
+  `solar_id` int(0) NULL DEFAULT NULL,
+  `one_off` tinyint(1) NOT NULL,
+  `start_time` datetime(6) NULL DEFAULT NULL,
+  `priority` int(0) UNSIGNED NULL DEFAULT NULL,
+  `headers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `clocked_id` int(0) NULL DEFAULT NULL,
+  `expire_seconds` int(0) UNSIGNED NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `name`(`name`) USING BTREE,
+  INDEX `django_celery_beat_p_crontab_id_d3cba168_fk_django_ce`(`crontab_id`) USING BTREE,
+  INDEX `django_celery_beat_p_interval_id_a8ca27da_fk_django_ce`(`interval_id`) USING BTREE,
+  INDEX `django_celery_beat_p_solar_id_a87ce72c_fk_django_ce`(`solar_id`) USING BTREE,
+  INDEX `django_celery_beat_p_clocked_id_47a69f82_fk_django_ce`(`clocked_id`) USING BTREE,
+  CONSTRAINT `django_celery_beat_p_clocked_id_47a69f82_fk_django_ce` FOREIGN KEY (`clocked_id`) REFERENCES `django_celery_beat_clockedschedule` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `django_celery_beat_p_crontab_id_d3cba168_fk_django_ce` FOREIGN KEY (`crontab_id`) REFERENCES `django_celery_beat_crontabschedule` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `django_celery_beat_p_interval_id_a8ca27da_fk_django_ce` FOREIGN KEY (`interval_id`) REFERENCES `django_celery_beat_intervalschedule` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `django_celery_beat_p_solar_id_a87ce72c_fk_django_ce` FOREIGN KEY (`solar_id`) REFERENCES `django_celery_beat_solarschedule` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of django_celery_beat_periodictask
+-- ----------------------------
+INSERT INTO `django_celery_beat_periodictask` VALUES (2, '测试', 'trade.tasks.add', '[1,3]', '{}', NULL, NULL, NULL, NULL, 1, '2025-04-27 09:10:00.577329', 3672, '2025-04-27 09:10:01.155983', '测试add，5s执行一次', NULL, 1, NULL, 0, NULL, NULL, '{}', NULL, NULL);
+INSERT INTO `django_celery_beat_periodictask` VALUES (3, '检查订单状态', 'trade.tasks.batch_check_expired_orders', '[]', '{}', NULL, NULL, NULL, NULL, 1, '2025-04-27 09:09:31.140035', 570, '2025-04-27 09:10:01.144014', '30秒检查一次', NULL, 2, NULL, 0, NULL, NULL, '{}', NULL, NULL);
+INSERT INTO `django_celery_beat_periodictask` VALUES (4, 'celery.backend_cleanup', 'celery.backend_cleanup', '[]', '{}', NULL, NULL, NULL, NULL, 1, NULL, 0, '2025-04-27 02:02:10.132167', '', 1, NULL, NULL, 0, NULL, NULL, '{}', NULL, 43200);
+
+-- ----------------------------
+-- Table structure for django_celery_beat_periodictasks
+-- ----------------------------
+DROP TABLE IF EXISTS `django_celery_beat_periodictasks`;
+CREATE TABLE `django_celery_beat_periodictasks`  (
+  `ident` smallint(0) NOT NULL,
+  `last_update` datetime(6) NOT NULL,
+  PRIMARY KEY (`ident`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of django_celery_beat_periodictasks
+-- ----------------------------
+INSERT INTO `django_celery_beat_periodictasks` VALUES (1, '2025-04-27 02:02:10.133165');
+
+-- ----------------------------
+-- Table structure for django_celery_beat_solarschedule
+-- ----------------------------
+DROP TABLE IF EXISTS `django_celery_beat_solarschedule`;
+CREATE TABLE `django_celery_beat_solarschedule`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `event` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `latitude` decimal(9, 6) NOT NULL,
+  `longitude` decimal(9, 6) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `django_celery_beat_solar_event_latitude_longitude_ba64999a_uniq`(`event`, `latitude`, `longitude`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of django_celery_beat_solarschedule
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for django_content_type
@@ -224,19 +419,28 @@ CREATE TABLE `django_content_type`  (
   `model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `django_content_type_app_label_model_76bd3d3b_uniq`(`app_label`, `model`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_content_type
 -- ----------------------------
+INSERT INTO `django_content_type` VALUES (9, 'account', 'profile');
 INSERT INTO `django_content_type` VALUES (1, 'admin', 'logentry');
 INSERT INTO `django_content_type` VALUES (3, 'auth', 'group');
 INSERT INTO `django_content_type` VALUES (2, 'auth', 'permission');
 INSERT INTO `django_content_type` VALUES (4, 'auth', 'user');
 INSERT INTO `django_content_type` VALUES (5, 'contenttypes', 'contenttype');
+INSERT INTO `django_content_type` VALUES (17, 'django_celery_beat', 'clockedschedule');
+INSERT INTO `django_content_type` VALUES (12, 'django_celery_beat', 'crontabschedule');
+INSERT INTO `django_content_type` VALUES (13, 'django_celery_beat', 'intervalschedule');
+INSERT INTO `django_content_type` VALUES (14, 'django_celery_beat', 'periodictask');
+INSERT INTO `django_content_type` VALUES (15, 'django_celery_beat', 'periodictasks');
+INSERT INTO `django_content_type` VALUES (16, 'django_celery_beat', 'solarschedule');
 INSERT INTO `django_content_type` VALUES (7, 'movie', 'category');
 INSERT INTO `django_content_type` VALUES (8, 'movie', 'movie');
 INSERT INTO `django_content_type` VALUES (6, 'sessions', 'session');
+INSERT INTO `django_content_type` VALUES (10, 'trade', 'card');
+INSERT INTO `django_content_type` VALUES (11, 'trade', 'order');
 
 -- ----------------------------
 -- Table structure for django_migrations
@@ -248,7 +452,7 @@ CREATE TABLE `django_migrations`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of django_migrations
@@ -272,6 +476,30 @@ INSERT INTO `django_migrations` VALUES (16, 'auth', '0011_update_proxy_permissio
 INSERT INTO `django_migrations` VALUES (17, 'auth', '0012_alter_user_first_name_max_length', '2025-03-16 08:24:33.210732');
 INSERT INTO `django_migrations` VALUES (18, 'sessions', '0001_initial', '2025-03-16 08:24:33.259132');
 INSERT INTO `django_migrations` VALUES (19, 'movie', '0001_initial', '2025-03-17 03:03:15.535162');
+INSERT INTO `django_migrations` VALUES (20, 'account', '0001_initial', '2025-04-18 02:04:54.894901');
+INSERT INTO `django_migrations` VALUES (21, 'trade', '0001_initial', '2025-04-20 01:09:00.425688');
+INSERT INTO `django_migrations` VALUES (22, 'trade', '0002_order', '2025-04-21 05:29:37.814052');
+INSERT INTO `django_migrations` VALUES (23, 'django_celery_beat', '0001_initial', '2025-04-27 00:58:29.676678');
+INSERT INTO `django_migrations` VALUES (24, 'django_celery_beat', '0002_auto_20161118_0346', '2025-04-27 00:58:29.788779');
+INSERT INTO `django_migrations` VALUES (25, 'django_celery_beat', '0003_auto_20161209_0049', '2025-04-27 00:58:29.822964');
+INSERT INTO `django_migrations` VALUES (26, 'django_celery_beat', '0004_auto_20170221_0000', '2025-04-27 00:58:29.829982');
+INSERT INTO `django_migrations` VALUES (27, 'django_celery_beat', '0005_add_solarschedule_events_choices', '2025-04-27 00:58:29.839883');
+INSERT INTO `django_migrations` VALUES (28, 'django_celery_beat', '0006_auto_20180322_0932', '2025-04-27 00:58:29.966959');
+INSERT INTO `django_migrations` VALUES (29, 'django_celery_beat', '0007_auto_20180521_0826', '2025-04-27 00:58:30.114432');
+INSERT INTO `django_migrations` VALUES (30, 'django_celery_beat', '0008_auto_20180914_1922', '2025-04-27 00:58:30.183248');
+INSERT INTO `django_migrations` VALUES (31, 'django_celery_beat', '0006_auto_20180210_1226', '2025-04-27 00:58:30.208176');
+INSERT INTO `django_migrations` VALUES (32, 'django_celery_beat', '0006_periodictask_priority', '2025-04-27 00:58:30.297980');
+INSERT INTO `django_migrations` VALUES (33, 'django_celery_beat', '0009_periodictask_headers', '2025-04-27 00:58:30.389007');
+INSERT INTO `django_migrations` VALUES (34, 'django_celery_beat', '0010_auto_20190429_0326', '2025-04-27 00:58:30.551777');
+INSERT INTO `django_migrations` VALUES (35, 'django_celery_beat', '0011_auto_20190508_0153', '2025-04-27 00:58:30.668857');
+INSERT INTO `django_migrations` VALUES (36, 'django_celery_beat', '0012_periodictask_expire_seconds', '2025-04-27 00:58:30.765488');
+INSERT INTO `django_migrations` VALUES (37, 'django_celery_beat', '0013_auto_20200609_0727', '2025-04-27 00:58:30.778460');
+INSERT INTO `django_migrations` VALUES (38, 'django_celery_beat', '0014_remove_clockedschedule_enabled', '2025-04-27 00:58:30.833592');
+INSERT INTO `django_migrations` VALUES (39, 'django_celery_beat', '0015_edit_solarschedule_events_choices', '2025-04-27 00:58:30.843020');
+INSERT INTO `django_migrations` VALUES (40, 'django_celery_beat', '0016_alter_crontabschedule_timezone', '2025-04-27 00:58:30.855945');
+INSERT INTO `django_migrations` VALUES (41, 'django_celery_beat', '0017_alter_crontabschedule_month_of_year', '2025-04-27 00:58:30.867146');
+INSERT INTO `django_migrations` VALUES (42, 'django_celery_beat', '0018_improve_crontab_helptext', '2025-04-27 00:58:30.878629');
+INSERT INTO `django_migrations` VALUES (43, 'django_celery_beat', '0019_alter_periodictasks_options', '2025-04-27 00:58:30.885611');
 
 -- ----------------------------
 -- Table structure for django_session
@@ -289,6 +517,8 @@ CREATE TABLE `django_session`  (
 -- Records of django_session
 -- ----------------------------
 INSERT INTO `django_session` VALUES ('6dqr82kw2wsxotl94gwjfxcxb46clpf5', '.eJxVjDsOwjAQBe_iGlm2499S0nMGa9cfHEC2FCcV4u4QKQW0b2beiwXc1hq2kZcwJ3Zmkp1-N8L4yG0H6Y7t1nnsbV1m4rvCDzr4taf8vBzu30HFUb-1l54koFCimAwRrVTeOiOcJD9pp6NROtPkwYIBLaPNrqhCiN4QgdDs_QG0JDbx:1ttjNw:hAyLEjXYR1Q2UALpH9uF0B5Uwp0o3GIioAmOiTz9hsM', '2025-03-30 08:30:16.014641');
+INSERT INTO `django_session` VALUES ('915k01bkftbpsnb107epx6b7zycvgu45', '.eJxVjDsOwjAQBe_iGlm2499S0nMGa9cfHEC2FCcV4u4QKQW0b2beiwXc1hq2kZcwJ3Zmkp1-N8L4yG0H6Y7t1nnsbV1m4rvCDzr4taf8vBzu30HFUb-1l54koFCimAwRrVTeOiOcJD9pp6NROtPkwYIBLaPNrqhCiN4QgdDs_QG0JDbx:1u62q3:4zGe-Av43gEHBEOCzqfyeGR5k7Zc36SFvyGGIEIwUWA', '2025-05-03 07:42:11.883592');
+INSERT INTO `django_session` VALUES ('e3mmg63e4n6i975brbv0kkhri072hm6w', '.eJxVjDsOwjAQBe_iGlm2499S0nMGa9cfHEC2FCcV4u4QKQW0b2beiwXc1hq2kZcwJ3Zmkp1-N8L4yG0H6Y7t1nnsbV1m4rvCDzr4taf8vBzu30HFUb-1l54koFCimAwRrVTeOiOcJD9pp6NROtPkwYIBLaPNrqhCiN4QgdDs_QG0JDbx:1u6K91:OOZO9HbI_X7r5beDlOfU0-wqfl6ZAp8uD2OucRgL-Rg', '2025-05-04 02:10:55.550547');
 INSERT INTO `django_session` VALUES ('nbmu749ml81gmjafm1q0n4sgmiz9cwm8', '.eJxVjDsOwjAQBe_iGlm2499S0nMGa9cfHEC2FCcV4u4QKQW0b2beiwXc1hq2kZcwJ3Zmkp1-N8L4yG0H6Y7t1nnsbV1m4rvCDzr4taf8vBzu30HFUb-1l54koFCimAwRrVTeOiOcJD9pp6NROtPkwYIBLaPNrqhCiN4QgdDs_QG0JDbx:1tu0wz:2zIzXQ6p4PNPVzuoFgaP1Z-8LvAh2aJcCsqvo4QXNY4', '2025-03-31 03:15:37.574933');
 
 -- ----------------------------
@@ -324,12 +554,12 @@ CREATE TABLE `movie`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `movie_category_id_9612da2e_fk_category_id`(`category_id`) USING BTREE,
   CONSTRAINT `movie_category_id_9612da2e_fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 533 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 534 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of movie
 -- ----------------------------
-INSERT INTO `movie` VALUES (2, '人生小事', 2022, '刘江江', '刘江江', '朱一龙/杨恩又/王戈/刘陆/罗京民', 1, '剧情/家庭', '汉语普通话', '2022-06-24', '112分钟', ' Lighting Up The Stars / Funeral Family', 'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2874262709.jpg', 7.3, '殡葬师莫三妹（朱一龙 饰）在刑满释放不久后的一次出殡中，遇到了孤儿武小文（杨恩又 饰），小文的出现，意外地改变了莫三妹对职业和生活的态度。', 0, 0, 0, '', '', '', '', 1, 1, 1);
+INSERT INTO `movie` VALUES (2, '人生小事', 2022, '刘江江', '刘江江', '朱一龙/杨恩又/王戈/刘陆/罗京民', 1, '剧情/家庭', '汉语普通话', '2022-06-24', '112分钟', 'Lighting Up The Stars / Funeral Family', 'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2874262709.jpg', 7.3, '殡葬师莫三妹（朱一龙 饰）在刑满释放不久后的一次出殡中，遇到了孤儿武小文（杨恩又 饰），小文的出现，意外地改变了莫三妹对职业和生活的态度。', 0, 0, 1, '', '', '', '百度网盘:http://www.baidu.com 提取码:8888\r\n阿里云盘: http://www.aliyunpan.com 提取码:99999', 1, 0, 1);
 INSERT INTO `movie` VALUES (3, '我不是药神', 2018, '文牧野', '文牧野', '徐峥/王传君/周一围/谭卓/章宇', 1, '剧情/喜剧', '汉语普通话 / 英语 / 上海话 / 印地语', '2018-07-05', '117分钟', ' 中国药神 / 印度药神 / 印度药商 / 生命之路 / Dying to Survive / Drug Dealer', 'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2561305376.jpg', 9, '普通中年男子程勇（徐峥 饰）经营着一家保健品店，失意又失婚。不速之客吕受益（王传君 饰）的到来，让他开辟了一条去印度买药做“代购”的新事业，虽然困难重重，但他在这条“买药之路”上发现了商机，一发不可收拾地做起了治疗慢粒白血病的印度仿制药独家代理商。赚钱的同时，他也认识了几个病患及家属，为救女儿被迫做舞女的思慧（谭卓 饰）、说一口流利“神父腔”英语的刘牧师（杨新鸣 饰），以及脾气暴烈的“黄毛”（章宇 饰），几个人合伙做起了生意，利润倍增的同时也危机四伏。程勇昔日的小舅子曹警官（周一围 饰）奉命调查仿制药的源头，假药贩子张长林（王砚辉 饰）和瑞士正牌医药代表（李乃文 饰）也对其虎视眈眈，生意逐渐变成了一场关于救赎的拉锯战。\n                                    <br />\n                                　　本片改编自慢粒白血病患者陆勇代购抗癌药的真实事迹。', 0, 0, 0, '', '', '', '', 1, 1, 1);
 INSERT INTO `movie` VALUES (4, '绿皮书 Green Book', 2018, '彼得·法雷里', '彼得·法雷里', '维果·莫腾森/马赫沙拉·阿里/琳达·卡德里尼/塞巴斯蒂安·马尼斯科/迪米特·D·马里诺夫', 1, '剧情/喜剧/音乐/传记', '英语 / 意大利语 / 俄语 / 德语', '2019-03-01', '130分钟', ' 绿簿旅友(港) / 幸福绿皮书(台) / 绿书', 'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2549177902.jpg', 8.9, '托尼（维果·莫腾森 Viggo Mortensen 饰）是一个吊儿郎当游手好闲的混混，在一家夜总会做侍者。这间夜总会因故要停业几个月，可托尼所要支付的房租和生活费不会因此取消，所以他的当务之急是去寻找另一份工作来填补这几个月的空缺。在这个节骨眼上，一位名叫唐雪莉（马赫沙拉·阿里 Mahershala Ali 饰）的黑人钢琴家提出雇佣托尼。\n                                    <br />\n                                　　唐雪莉即将开始为期八个星期的南下巡回演出，可是，那个时候南方对黑人的歧视非常的严重，于是托尼便成为了唐雪莉的司机兼保镖。一路上，两人迥异的性格使得他们之间产生了很多的矛盾，与此同时，唐雪莉在南方所遭受的种种不公平的对待也让托尼对种族歧视感到深恶痛绝。', 0, 0, 0, '', '', '', '', 1, 1, 1);
 INSERT INTO `movie` VALUES (5, '哪吒之魔童降世', 2019, '饺子', '魏芸芸', '吕艳婷/囧森瑟夫/瀚墨/陈浩/绿绮', 1, '剧情/喜剧/动画/奇幻', '汉语普通话', '2019-07-26', '110分钟', ' 哪吒降世 / Ne Zha / Nezha: Birth of the Demon Child', 'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2563780504.jpg', 8.4, '天地灵气孕育出一颗能量巨大的混元珠，元始天尊将混元珠提炼成灵珠和魔丸，灵珠投胎为人，助周伐纣时可堪大用；而魔丸则会诞出魔王，为祸人间。元始天尊启动了天劫咒语，3年后天雷将会降临，摧毁魔丸。太乙受命将灵珠托生于陈塘关李靖家的儿子哪吒身上。然而阴差阳错，灵珠和魔丸竟然被掉包。本应是灵珠英雄的哪吒却成了混世大魔王。调皮捣蛋顽劣不堪的哪吒却徒有一颗做英雄的心。然而面对众人对魔丸的误解和即将来临的天雷的降临，哪吒是否命中注定会立地成魔？他将何去何从？', 0, 0, 0, '', '', '', '', 1, 1, 1);
@@ -859,5 +1089,87 @@ INSERT INTO `movie` VALUES (528, '雪鹰领主 第三季', 2021, '刘炜', '刘�
 INSERT INTO `movie` VALUES (529, '天上掉下个猪八戒', 2005, '薛方一', '苏牧', '李晔/孙晔', 1, '剧情/喜剧/动画', '汉语普通话', '2005-02-09', '104', '', 'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2665402938.jpg', 8.2, '天蓬元帅觊觎嫦娥仙子的美貌，斗胆追求，因此遭到了玉帝的惩罚，在押解途中，天蓬元帅挣脱了桎梏想要逃跑，却误打误撞投胎成为了一头猪。土地无意之中打翻了观音菩萨的法宝“灵芝露”，灵芝露撒在了天蓬元帅的头上，从此时间多了一个猪头人身的猪八戒。\n                                    <br />\n                                　　猪八戒来到天庭为自己伸冤，却因为贪吃的恶习误了事，之后又和曾经的搭档福迪产生了争执，福迪亦被贬入人间。土地请来了猪八戒做自己庙里的保安，猪八戒赶走了常来惹事的野猪，却对付不了狡猾的老鼠。福迪和猪八戒两人俨然一对欢喜冤家，相互作对拆台，引发了一幕幕爆笑的场景。', 0, 0, 0, '', '', '', '', 1, 1, 4);
 INSERT INTO `movie` VALUES (530, '画江湖之不良人4', 2021, '舒奕橙', '李佳炫', '边江/申秋香/赵毅/阎萌萌/赵梦娇', 1, '动作/动画/武侠', '汉语普通话', '2021-04-29', '13', ' 画江湖之不良人Ⅳ / 画江湖之不良人 第四季 / 画江湖之不良人 第4季', 'https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2619010287.jpg', 9.1, '《画江湖之不良人 第4季》热血回归，十万大山危机四伏，苗疆之行艰难险阻。 神秘的十二峒有着怎样不为人知的秘密？面对强大的各方势力，李星云等人能否全身而退？此段神秘莫测的苗疆之旅，即将启程...', 0, 0, 0, '', '', '', '', 1, 1, 4);
 INSERT INTO `movie` VALUES (533, '大熊课堂python', 2023, 'andy', '大熊', '申大超', 1, '国产', '中文', '2025-03-19', '500', '', '', 8.8, '', 0, 0, 1, '', '', '', '', 1, 0, 1);
+
+-- ----------------------------
+-- Table structure for order
+-- ----------------------------
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order`  (
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `order_sn` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `trade_no` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `pay_status` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `pay_type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `order_mount` decimal(10, 2) NOT NULL,
+  `pay_time` datetime(6) NULL DEFAULT NULL,
+  `created_at` datetime(6) NOT NULL,
+  `updated_at` datetime(6) NOT NULL,
+  `card_id` bigint(0) NOT NULL,
+  `user_id` varchar(22) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `order_sn`(`order_sn`) USING BTREE,
+  UNIQUE INDEX `trade_no`(`trade_no`) USING BTREE,
+  INDEX `order_card_id_b3dcec4e_fk_card_id`(`card_id`) USING BTREE,
+  INDEX `order_user_id_e323497c_fk_profile_uid`(`user_id`) USING BTREE,
+  CONSTRAINT `order_card_id_b3dcec4e_fk_card_id` FOREIGN KEY (`card_id`) REFERENCES `card` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `order_user_id_e323497c_fk_profile_uid` FOREIGN KEY (`user_id`) REFERENCES `profile` (`uid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of order
+-- ----------------------------
+INSERT INTO `order` VALUES (51, 'pay202504231632200382', NULL, 'TRADE_CLOSED', 'alipay', 0.02, '2025-04-23 08:32:20.943817', '2025-04-23 08:32:20.944814', '2025-04-27 02:02:44.628760', 2, 'LCFQBcxPkuFc59NjpcpZBW');
+INSERT INTO `order` VALUES (52, 'pay202504241421546172', NULL, 'TRADE_CLOSED', 'alipay', 0.01, '2025-04-24 06:21:55.001903', '2025-04-24 06:21:55.002940', '2025-04-27 02:02:44.658682', 1, 'LCFQBcxPkuFc59NjpcpZBW');
+INSERT INTO `order` VALUES (53, 'pay202504241440469833', '2025042422001474140505889680', 'TRADE_SUCCESS', 'alipay', 0.01, '2025-04-24 06:41:12.521712', '2025-04-24 06:40:46.003657', '2025-04-24 06:41:12.521712', 1, 'LCFQBcxPkuFc59NjpcpZBW');
+INSERT INTO `order` VALUES (54, 'pay202504251603145131', '2025042522001474140505910022', 'TRADE_SUCCESS', 'alipay', 0.01, '2025-04-25 08:04:05.873893', '2025-04-25 08:03:14.713603', '2025-04-25 08:04:05.873893', 1, 'LCFQBcxPkuFc59NjpcpZBW');
+INSERT INTO `order` VALUES (55, 'pay202504251605595794', '2025042522001474140505904331', 'TRADE_SUCCESS', 'alipay', 0.02, '2025-04-25 08:06:35.338523', '2025-04-25 08:05:59.766861', '2025-04-25 08:06:35.338523', 2, 'LCFQBcxPkuFc59NjpcpZBW');
+INSERT INTO `order` VALUES (56, 'pay202504271005113092', NULL, 'TRADE_CLOSED', 'alipay', 0.01, '2025-04-27 02:05:11.216096', '2025-04-27 02:05:11.217093', '2025-04-27 02:35:15.366184', 1, 'LCFQBcxPkuFc59NjpcpZBW');
+
+-- ----------------------------
+-- Table structure for profile
+-- ----------------------------
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE `profile`  (
+  `uid` varchar(22) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `email` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `avatar` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `is_upgrade` int(0) NOT NULL,
+  `upgrade_time` datetime(6) NULL DEFAULT NULL,
+  `expire_time` datetime(6) NULL DEFAULT NULL,
+  `upgrade_count` int(0) NOT NULL,
+  `user_id` int(0) NOT NULL,
+  PRIMARY KEY (`uid`) USING BTREE,
+  UNIQUE INDEX `user_id`(`user_id`) USING BTREE,
+  INDEX `profile_phone_93a43e17`(`phone`) USING BTREE,
+  INDEX `profile_email_cadfb989`(`email`) USING BTREE,
+  CONSTRAINT `profile_user_id_2aeb6f6b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of profile
+-- ----------------------------
+INSERT INTO `profile` VALUES ('LCFQBcxPkuFc59NjpcpZBW', NULL, NULL, NULL, 1, '2025-04-25 08:06:35.342513', '2025-09-21 06:41:12.526701', 3, 16);
+
+-- ----------------------------
+-- Table structure for profile_movies
+-- ----------------------------
+DROP TABLE IF EXISTS `profile_movies`;
+CREATE TABLE `profile_movies`  (
+  `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `profile_id` varchar(22) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `movie_id` int(0) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `profile_movies_profile_id_movie_id_339d56a3_uniq`(`profile_id`, `movie_id`) USING BTREE,
+  INDEX `profile_movies_movie_id_f3cd10e3_fk_movie_id`(`movie_id`) USING BTREE,
+  CONSTRAINT `profile_movies_movie_id_f3cd10e3_fk_movie_id` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `profile_movies_profile_id_69f10ca6_fk_profile_uid` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`uid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of profile_movies
+-- ----------------------------
+INSERT INTO `profile_movies` VALUES (1, 'LCFQBcxPkuFc59NjpcpZBW', 2);
+INSERT INTO `profile_movies` VALUES (2, 'LCFQBcxPkuFc59NjpcpZBW', 5);
 
 SET FOREIGN_KEY_CHECKS = 1;

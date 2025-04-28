@@ -1,5 +1,5 @@
 # django项目的配置
-/server/env
+/server/venv
 __pycache__
 
 
