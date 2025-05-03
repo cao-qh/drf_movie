@@ -11,7 +11,7 @@
  Target Server Version : 80041
  File Encoding         : 65001
 
- Date: 28/04/2025 17:10:00
+ Date: 03/05/2025 14:17:48
 */
 
 SET NAMES utf8mb4;
@@ -155,7 +155,7 @@ CREATE TABLE `auth_user`  (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user
@@ -176,7 +176,7 @@ CREATE TABLE `auth_user_groups`  (
   INDEX `auth_user_groups_group_id_97559544_fk_auth_group_id`(`group_id`) USING BTREE,
   CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user_groups
@@ -195,7 +195,7 @@ CREATE TABLE `auth_user_user_permissions`  (
   INDEX `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm`(`permission_id`) USING BTREE,
   CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auth_user_user_permissions
@@ -215,7 +215,7 @@ CREATE TABLE `card`  (
   `updated_at` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `card_name`(`card_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of card
@@ -373,9 +373,9 @@ CREATE TABLE `django_celery_beat_periodictask`  (
 -- ----------------------------
 -- Records of django_celery_beat_periodictask
 -- ----------------------------
-INSERT INTO `django_celery_beat_periodictask` VALUES (2, '测试', 'trade.tasks.add', '[1,3]', '{}', NULL, NULL, NULL, NULL, 1, '2025-04-27 09:10:00.577329', 3672, '2025-04-27 09:10:01.155983', '测试add，5s执行一次', NULL, 1, NULL, 0, NULL, NULL, '{}', NULL, NULL);
-INSERT INTO `django_celery_beat_periodictask` VALUES (3, '检查订单状态', 'trade.tasks.batch_check_expired_orders', '[]', '{}', NULL, NULL, NULL, NULL, 1, '2025-04-27 09:09:31.140035', 570, '2025-04-27 09:10:01.144014', '30秒检查一次', NULL, 2, NULL, 0, NULL, NULL, '{}', NULL, NULL);
-INSERT INTO `django_celery_beat_periodictask` VALUES (4, 'celery.backend_cleanup', 'celery.backend_cleanup', '[]', '{}', NULL, NULL, NULL, NULL, 1, NULL, 0, '2025-04-27 02:02:10.132167', '', 1, NULL, NULL, 0, NULL, NULL, '{}', NULL, 43200);
+INSERT INTO `django_celery_beat_periodictask` VALUES (2, '测试', 'trade.tasks.add', '[1,3]', '{}', NULL, NULL, NULL, NULL, 1, '2025-05-03 06:16:16.803281', 6763, '2025-05-03 06:16:17.024718', '测试add，5s执行一次', NULL, 1, NULL, 0, NULL, NULL, '{}', NULL, NULL);
+INSERT INTO `django_celery_beat_periodictask` VALUES (3, '检查订单状态', 'trade.tasks.batch_check_expired_orders', '[]', '{}', NULL, NULL, NULL, NULL, 1, '2025-05-03 06:15:46.990890', 1086, '2025-05-03 06:16:17.009455', '30秒检查一次', NULL, 2, NULL, 0, NULL, NULL, '{}', NULL, NULL);
+INSERT INTO `django_celery_beat_periodictask` VALUES (4, 'celery.backend_cleanup', 'celery.backend_cleanup', '[]', '{}', NULL, NULL, NULL, NULL, 1, NULL, 0, '2025-05-03 02:43:21.606726', '', 1, NULL, NULL, 0, NULL, NULL, '{}', NULL, 43200);
 
 -- ----------------------------
 -- Table structure for django_celery_beat_periodictasks
@@ -390,7 +390,7 @@ CREATE TABLE `django_celery_beat_periodictasks`  (
 -- ----------------------------
 -- Records of django_celery_beat_periodictasks
 -- ----------------------------
-INSERT INTO `django_celery_beat_periodictasks` VALUES (1, '2025-04-27 02:02:10.133165');
+INSERT INTO `django_celery_beat_periodictasks` VALUES (1, '2025-05-03 02:43:21.607441');
 
 -- ----------------------------
 -- Table structure for django_celery_beat_solarschedule
@@ -1113,17 +1113,17 @@ CREATE TABLE `order`  (
   INDEX `order_user_id_e323497c_fk_profile_uid`(`user_id`) USING BTREE,
   CONSTRAINT `order_card_id_b3dcec4e_fk_card_id` FOREIGN KEY (`card_id`) REFERENCES `card` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `order_user_id_e323497c_fk_profile_uid` FOREIGN KEY (`user_id`) REFERENCES `profile` (`uid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of order
 -- ----------------------------
-INSERT INTO `order` VALUES (51, 'pay202504231632200382', NULL, 'TRADE_CLOSED', 'alipay', 0.02, '2025-04-23 08:32:20.943817', '2025-04-23 08:32:20.944814', '2025-04-27 02:02:44.628760', 2, 'LCFQBcxPkuFc59NjpcpZBW');
-INSERT INTO `order` VALUES (52, 'pay202504241421546172', NULL, 'TRADE_CLOSED', 'alipay', 0.01, '2025-04-24 06:21:55.001903', '2025-04-24 06:21:55.002940', '2025-04-27 02:02:44.658682', 1, 'LCFQBcxPkuFc59NjpcpZBW');
+INSERT INTO `order` VALUES (51, 'pay202504231632200382', NULL, 'TRADE_CLOSED', 'alipay', 0.02, '2025-04-23 08:32:20.943817', '2025-04-23 08:32:20.944814', '2025-05-02 14:24:21.857946', 2, 'LCFQBcxPkuFc59NjpcpZBW');
+INSERT INTO `order` VALUES (52, 'pay202504241421546172', NULL, 'TRADE_CLOSED', 'alipay', 0.01, '2025-04-24 06:21:55.001903', '2025-04-24 06:21:55.002940', '2025-05-02 14:24:21.886678', 1, 'LCFQBcxPkuFc59NjpcpZBW');
 INSERT INTO `order` VALUES (53, 'pay202504241440469833', '2025042422001474140505889680', 'TRADE_SUCCESS', 'alipay', 0.01, '2025-04-24 06:41:12.521712', '2025-04-24 06:40:46.003657', '2025-04-24 06:41:12.521712', 1, 'LCFQBcxPkuFc59NjpcpZBW');
 INSERT INTO `order` VALUES (54, 'pay202504251603145131', '2025042522001474140505910022', 'TRADE_SUCCESS', 'alipay', 0.01, '2025-04-25 08:04:05.873893', '2025-04-25 08:03:14.713603', '2025-04-25 08:04:05.873893', 1, 'LCFQBcxPkuFc59NjpcpZBW');
 INSERT INTO `order` VALUES (55, 'pay202504251605595794', '2025042522001474140505904331', 'TRADE_SUCCESS', 'alipay', 0.02, '2025-04-25 08:06:35.338523', '2025-04-25 08:05:59.766861', '2025-04-25 08:06:35.338523', 2, 'LCFQBcxPkuFc59NjpcpZBW');
-INSERT INTO `order` VALUES (56, 'pay202504271005113092', NULL, 'TRADE_CLOSED', 'alipay', 0.01, '2025-04-27 02:05:11.216096', '2025-04-27 02:05:11.217093', '2025-04-27 02:35:15.366184', 1, 'LCFQBcxPkuFc59NjpcpZBW');
+INSERT INTO `order` VALUES (56, 'pay202504271005113092', NULL, 'TRADE_CLOSED', 'alipay', 0.01, '2025-04-27 02:05:11.216096', '2025-04-27 02:05:11.217093', '2025-05-02 14:24:21.918597', 1, 'LCFQBcxPkuFc59NjpcpZBW');
 
 -- ----------------------------
 -- Table structure for profile
