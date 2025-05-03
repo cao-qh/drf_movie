@@ -74,9 +74,9 @@ export default {
           <a href="http://127.0.0.1:8080">
             <img src="../assets/images/logo.png" style="height:39px">
           </a>
-          <div id=nav class=px-4>
+          <!-- <div id=nav class=px-4>
             <Category></Category>
-          </div>
+          </div> -->
         </div>
         <div class="flex items-center space-x-2">
           <div class="relative shrink">

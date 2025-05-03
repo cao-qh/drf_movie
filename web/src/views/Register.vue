@@ -76,9 +76,8 @@ export default {
       <img src="../assets/images/bg.png" alt="" class="rounded-l max-h-[500px]" />
      </div>
      <div class="rounded-r w-80 h-[500px] my-8 px-2 py-4 bg-white shadow shadow-gray-300">
-      <div class="text-center text-lg py-6">
-       用户注册
-      </div>
+      <h1 class="text-center text-lg py-6">云课堂学习平台</h1>
+      <h2 class="text-center text-base pb-6">用户注册</h2>
       <form action="" method="post" id="register_form" class="px-4">
        <div class="flex justify-left items-center relative h-10 px-4 my-2 rounded border-solid border border-gray-400">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-300 mr-2" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2">
