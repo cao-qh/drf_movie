@@ -75,11 +75,11 @@ class Movie(models.Model):
     quality = models.SmallIntegerField(
         choices=Quality, blank=False, verbose_name="清晰度"
     )
-    subtitle = models.CharField(max_length=100, blank=True, verbose_name="字幕")
-    update_info = models.CharField(max_length=100, blank=True, verbose_name="更新信息")
-    update_progress = models.CharField(
-        max_length=100, blank=True, verbose_name="更新进度"
-    )
+    # subtitle = models.CharField(max_length=100, blank=True, verbose_name="字幕")
+    # update_info = models.CharField(max_length=100, blank=True, verbose_name="更新信息")
+    # update_progress = models.CharField(
+    #     max_length=100, blank=True, verbose_name="更新进度"
+    # )
     download_info = models.TextField(
         max_length=500,
         blank=True,
