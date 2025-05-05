@@ -59,7 +59,7 @@ class Movie(models.Model):
     course_name = models.CharField(max_length=100, verbose_name="课程名")
     # release_year = models.IntegerField(verbose_name="上映年份")
     author = models.CharField(max_length=100, verbose_name="作者")
-    author_info = models.CharField(max_length=100, verbose_name="作者简介")
+    author_info = models.TextField(max_length=300, verbose_name="作者简介")
     # scriptwriter = models.CharField(max_length=100, verbose_name="编剧")
     # actors = models.CharField(max_length=200, verbose_name="主演")
     # region = models.SmallIntegerField(choices=Region, verbose_name="地区")

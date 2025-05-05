@@ -9,7 +9,7 @@ export default {
   props: ['info'],
   computed: {
     lastPage() {
-      let pageSize = 12
+      let pageSize = 9
       return Math.ceil(this.info.count / pageSize)
     },
     prePage() {

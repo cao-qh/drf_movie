@@ -12,3 +12,7 @@
 
 5.运行后端服务器的flower工具，在server根目录下运行celery -A config flower --basic-auth=andy:andygogo
 
+## 其他资料
+
+1.网盘课程资源 链接: https://pan.baidu.com/s/1j4c3cNe_5T_mgGD9fw1_Bg?pwd=8855 提取码: 8855
+

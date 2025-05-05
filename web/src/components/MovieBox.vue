@@ -35,7 +35,7 @@ export default {
                 .get('/api/movie/' + movie_id)
                 .then(response => {
                     this.movie = response.data
-                    this.catalogueList = this.movie.catalogue.split('\r\n')
+                    this.catalogueList = this.movie.catalogue.split('\n')
                 })
         },
         //获取收藏状态
