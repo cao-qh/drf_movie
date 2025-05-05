@@ -179,7 +179,7 @@ export default {
                             <div v-else
                                 class="flex justify-center items-center mx-6 rounded h-28 bg-gradient-to-r bg-gray-700">
                                 <button v-on:click="check_member_status" id="check_member"
-                                    class="rounded text-center bg-blue-500">点击查看网盘信息</button>
+                                    class="rounded text-center bg-blue-500 text-white p-2">点击查看网盘信息</button>
                             </div>
                         </div>
                         <div v-else>
