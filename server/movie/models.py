@@ -56,19 +56,21 @@ class Category(models.Model):
 class Movie(models.Model):
     # 电影信息
     id = models.AutoField(primary_key=True)
-    movie_name = models.CharField(max_length=100, verbose_name="电影名")
-    release_year = models.IntegerField(verbose_name="上映年份")
-    director = models.CharField(max_length=100, verbose_name="导演")
-    scriptwriter = models.CharField(max_length=100, verbose_name="编剧")
-    actors = models.CharField(max_length=200, verbose_name="主演")
-    region = models.SmallIntegerField(choices=Region, verbose_name="地区")
-    types = models.CharField(max_length=50, verbose_name="类型")
-    language = models.CharField(max_length=100, verbose_name="语言")
-    release_date = models.DateField(verbose_name="上映日期")
+    course_name = models.CharField(max_length=100, verbose_name="课程名")
+    # release_year = models.IntegerField(verbose_name="上映年份")
+    author = models.CharField(max_length=100, verbose_name="作者")
+    author_info = models.CharField(max_length=100, verbose_name="作者简介")
+    # scriptwriter = models.CharField(max_length=100, verbose_name="编剧")
+    # actors = models.CharField(max_length=200, verbose_name="主演")
+    # region = models.SmallIntegerField(choices=Region, verbose_name="地区")
+    # types = models.CharField(max_length=50, verbose_name="类型")
+    # language = models.CharField(max_length=100, verbose_name="语言")
+    release_date = models.DateField(verbose_name="发布日期")
     duration = models.CharField(max_length=50, verbose_name="时长(或集数)")
-    alternate_name = models.CharField(max_length=100, blank=True, verbose_name="又名")
+    # alternate_name = models.CharField(max_length=100, blank=True, verbose_name="又名")
     image_url = models.CharField(max_length=300, blank=True, verbose_name="图片链接")
-    rate = models.FloatField(blank=True, verbose_name="豆瓣评分")
+    rate = models.FloatField(blank=True, verbose_name="评分")
+    catalogue = models.TextField(max_length=1000, verbose_name="目录")
     review = models.TextField(max_length=500, blank=True, verbose_name="简介")
     is_hot = models.BooleanField(choices=Hot, default=False, verbose_name="是否热门")
     is_top = models.BooleanField(choices=Top, default=False, verbose_name="是否置顶")
@@ -89,9 +91,9 @@ class Movie(models.Model):
     is_show = models.BooleanField(choices=SHOW, default=True, verbose_name="是否显示")
     is_free = models.BooleanField(choices=FREE, default=False, verbose_name="是否免费")
     # 设置外键关联
-    category = models.ForeignKey(
-        Category, blank=False, verbose_name="分类名", on_delete=models.CASCADE
-    )
+    # category = models.ForeignKey(
+    #     Category, blank=False, verbose_name="分类名", on_delete=models.CASCADE
+    # )
 
     class Meta:
         db_table = "movie"
@@ -99,4 +101,4 @@ class Movie(models.Model):
         verbose_name_plural = "电影管理"
 
     def __str__(self):
-        return self.movie_name
+        return self.course_name

@@ -13,6 +13,7 @@ export default {
             collectMessage: '',
             downloadInfo: false,
             userInfo: '',
+            catalogueList:[]
         }
     },
     components: { Footer, Header },
@@ -32,7 +33,10 @@ export default {
         get_movie_info(movie_id) {
             axios
                 .get('/api/movie/' + movie_id)
-                .then(response => (this.movie = response.data))
+                .then(response => {
+                    this.movie = response.data
+                    this.catalogueList = this.movie.catalogue.split('\r\n')
+                })
         },
         //获取收藏状态
         get_collect_status(movie_id) {
@@ -137,38 +141,25 @@ export default {
                         </div>
                         <button v-on:click="collect_or_cancle(movie.id)" id="collect"
                             :class="collectStatus ? 'bg-gray-500' : 'bg-blue-500'"
-                            class="copy text-white w-full px-4 py-1 mt-2 text-sm rounded border">{{ collectMessage
+                            class="copy text-white w-full px-4 py-2 mt-2 text-sm rounded border">{{ collectMessage
                             }}</button>
                     </div>
                     <div id="info" data-movie-id="443">
                         <ul>
-                            <li class="text-lg font-semibold">{{ movie.movie_name }} {{ movie.release_year }} </li>
-                            <li>导演: {{ movie.director }}</li>
-                            <li>编剧: {{ movie.scriptwriter }}</li>
-                            <li>主演: {{ movie.actors }}</li>
-                            <li>语言: {{ movie.language }}</li>
-                            <li>首播: {{ movie.release_date }}</li>
+                            <li class="text-lg font-semibold">{{ movie.course_name }} </li>
+                            <li>作者: {{ movie.author }}</li>
+                            <li>作者简介: {{ movie.author_info }}</li>
+                            <li>发布日期: {{ movie.release_date }}</li>                   
                             <li>集数: {{ movie.duration }}</li>
-                            <li>类型: {{ movie.types }}</li>
-                            <li> 制片国家/地区:
-                                <span v-if="movie.region === 1">中国大陆</span>
-                                <span v-else-if="movie.region === 2">中国香港</span>
-                                <span v-else-if="movie.region === 3">中国台湾</span>
-                                <span v-else-if="movie.region === 4">美国</span>
-                                <span v-else-if="movie.region === 5">韩国</span>
-                                <span v-else-if="movie.region === 6">日本</span>
-                                <span v-else>其它</span>
-
-                            </li>
-                            <li>又名: {{ movie.alternate_name }}</li>
-                            <li>豆瓣评分: {{ movie.rate }}</li>
+                            <li>评分: {{ movie.rate }}</li>
+                            <li>简介: {{ movie.review }}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="rounded bg-white mx-4 my-4 py-6">
                     <div class="px-6">
-                        <h1 class="text-lg mb-6 font-semibold">简介</h1>
-                        <p>{{ movie.review }}</p>
+                        <h1 class="text-lg mb-6 font-semibold">目录</h1>
+                        <p v-for="catalogue in catalogueList" :key="catalogue" class="mb-2">{{ catalogue }}</p>
                     </div>
                 </div>
                 <div id="download_info" class="rounded bg-white mx-4 mt-4 py-6">
@@ -192,4 +183,8 @@ export default {
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+#info ul li {
+  margin-bottom: 5px;
+}
+</style>

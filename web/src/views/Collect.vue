@@ -35,8 +35,8 @@
                                         4k
                                     </div>
                                 </div>
-                                <p> {{ movie.movie_name }}({{ movie.release_year }})</p>
-                                <p class="text-sm text-primary-200">{{ movie.language }}</p>
+                                <p> {{ movie.course_name }} ({{ movie.duration }})</p>
+                                <!-- <p class="text-sm text-primary-200">{{ movie.author_info }}</p> -->
                             </a>
                         </div>
                     </div>

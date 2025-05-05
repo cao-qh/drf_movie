@@ -57,7 +57,7 @@ export default {
 <template>
   <div class="flex items-center justify-center">
     <div class="w-full px-2" style="max-width:1440px">
-      <div id=movie-list class="p-2 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div id=movie-list class="p-2 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class=movie v-for="movie in info.results" :key="movie.id">
           <a :href="'/movie/' + movie.id">
             <div class=relative>
@@ -71,8 +71,8 @@ export default {
               <div v-else-if="movie.quality == 3" class="rounded absolute bottom-0 right-0 bg-blue-500 px-1 text-sm">4k
               </div>
             </div>
-            <p>{{ movie.movie_name }} {{ movie.release_year }}</p>
-            <p class="text-sm text-primary-200">{{ movie.language }}</p>
+            <p>{{ movie.course_name }} 共{{ movie.duration }}课时</p>
+            <p class="text-sm text-primary-200">{{ movie.author_info }}中文</p>
           </a>
         </div>
       </div>
