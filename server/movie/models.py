@@ -97,8 +97,8 @@ class Movie(models.Model):
 
     class Meta:
         db_table = "movie"
-        verbose_name = "电影管理"
-        verbose_name_plural = "电影管理"
+        verbose_name = "课程管理"
+        verbose_name_plural = "课程管理"
 
     def __str__(self):
         return self.course_name
