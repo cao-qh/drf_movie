@@ -14,6 +14,9 @@ class Card(models.Model):
         db_table = 'card'
         verbose_name = "会员卡信息"
         verbose_name_plural = verbose_name
+    
+    def __str__(self):
+        return self.card_name
 
 class Order(models.Model):
     """
