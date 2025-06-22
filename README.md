@@ -22,6 +22,6 @@
 
 ## 其他资料
 
-1.网盘课程资源 链接: https://pan.baidu.com/s/1j4c3cNe_5T_mgGD9fw1_Bg?pwd=8855 提取码: 8855
+1.网盘资源 链接: https://pan.baidu.com/s/1j4c3cNe_5T_mgGD9fw1_Bg?pwd=8855 提取码: 8855
 
 将python项目虚拟环境使用的包导出到文件命令：pip freeze > requirements.txt
