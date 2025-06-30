@@ -71,7 +71,7 @@ export default {
     <div class="w-full px-4" style="max-width:1440px">
       <div class="flex justify-between">
         <div class="flex items-center">
-          <a href="http://127.0.0.1:8080">
+          <a href="/">
             <img src="../assets/images/logo.png" style="height:39px">
           </a>
           <!-- <div id=nav class=px-4>
